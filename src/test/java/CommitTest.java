@@ -2,7 +2,7 @@ import org.junit.jupiter.api.Test;
 
 public class CommitTest {
     @Test
-    void create() {
-        
+    void create_test() {
+
     }
 }
