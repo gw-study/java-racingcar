@@ -5,6 +5,6 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 public class CommitTest {
     @Test
     void create_test() {
-        assertThat("String3").isEqualTo("String3");
+        assertThat("String4").isEqualTo("String4");
     }
 }
