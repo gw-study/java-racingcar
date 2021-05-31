@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.*;
 
 class StringTest {
     @Test
-    @DisplayName("split함수로 '1,2' 잘 분리 되는지 테스")
+    @DisplayName("split함수로 '1,2' 잘 분리 되는지 테스트")
     public void split() {
         String[] values = "1,2".split(",");
         assertThat(values).containsExactly("1","2");
