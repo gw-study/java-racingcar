@@ -14,7 +14,7 @@ class StringTest {
     }
 
     @Test
-    @DisplayName("substring 함수로 '1,2'를 반환하는 테스")
+    @DisplayName("substring 함수로 '1,2'를 반환하는 테스트")
     public void substring() {
         String input = "(1,2)";
         String result = input.substring(1, input.length()-1);
