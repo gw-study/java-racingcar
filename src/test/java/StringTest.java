@@ -25,7 +25,7 @@ class StringTest {
     @DisplayName("charAt함수로 특정 위치의 문자 가져오는 테스트, 값을 벗어나면 Exception발생 테스트")
     public void charAt() {
         String input = "abc";
-        int index = 0;
+        int index = 10;
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
                 .isThrownBy(() -> { input.charAt(index); }).withMessage("%d", index);

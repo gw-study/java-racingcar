@@ -32,15 +32,14 @@ class SetTest {
     @ValueSource(ints = {1,2,3})
     @DisplayName("Set의 값이 존재하는지 확인")
     public void isContains(int number) {
-        assertTrue(numbers.contains(number));
+        assertThat(numbers.contains(number)).isTrue();
     }
 
     @ParameterizedTest
-    @CsvSource(value = {"1","2","3","4","5"})
+    @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
     @DisplayName("CsvSource를 활용한 ture/false 리턴 테스트")
-    public void isContains_ShouldReturnTrueOrFalseIntegerValues(int number) {
-        Boolean isTrue = numbers.contains(number);
-        assertEquals(true, isTrue);
+    public void isContains_ShouldReturnTrueOrFalseIntegerValues(int number, Boolean isTrue) {
+        assertEquals(isTrue, numbers.contains(number));
     }
 
 }
