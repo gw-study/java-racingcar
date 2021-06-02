@@ -10,7 +10,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class SetCollectionTest {
@@ -26,14 +25,14 @@ public class SetCollectionTest {
     }
 
     @Test
-    int getSize(){
-        return numbers.size();
+    void checkSetSize(){
+        assertThat(numbers).hasSize(3);
     }
 
     @ParameterizedTest
     @ValueSource(ints = {1,2,3})
-    void isNumbers_ShouldReturnTrueForNullOrBlankStrings(int number) {
-        assertTrue(number > 0 && number < 4);
+    void isContains(int number) {
+        assertTrue(numbers.contains(number));
     }
 
     @ParameterizedTest
