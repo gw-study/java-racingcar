@@ -38,8 +38,8 @@ class SetTest {
     @ParameterizedTest
     @CsvSource(value = {"1:true","2:true","3:true","4:false","5:false"}, delimiter = ':')
     @DisplayName("CsvSource를 활용한 ture/false 리턴 테스트")
-    public void isContains_ShouldReturnTrueOrFalseIntegerValues(int number, Boolean isTrue) {
-        assertEquals(isTrue, numbers.contains(number));
+    public void isContains_ShouldReturnTrueOrFalseIntegerValues(int number, boolean expected) {
+        assertThat(numbers.contains(number)).isEqualTo(expected);
     }
 
 }

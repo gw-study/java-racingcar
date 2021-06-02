@@ -28,7 +28,7 @@ class StringTest {
         int index = 10;
 
         assertThatExceptionOfType(IndexOutOfBoundsException.class)
-                .isThrownBy(() -> { input.charAt(index); }).withMessage("%d", index);
+                .isThrownBy(() -> { input.charAt(index); }).withMessage("String index out of range: %d", index);
 
     }
 }
