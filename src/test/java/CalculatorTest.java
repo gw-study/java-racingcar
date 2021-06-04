@@ -75,7 +75,7 @@ public class CalculatorTest {
         assertEquals(10,calculator(input));
     }
 
-    public int calculator(String input){
+    private int calculator(String input){
 
         if(isBlank(input)){
             throw new IllegalArgumentException("input data is blank or null");
