@@ -7,13 +7,10 @@ class StringTest {
     @Test
     void split() {
         String[] splitString = "1,2".split(",");
-        assertThat(splitString).contains("1", "2");
         assertThat(splitString).containsExactly("1", "2");
-//        assertThat(splitString).containsExactly("2", "1");      //Error
 
         splitString = "1".split(",");
         assertThat(splitString).contains("1");
-        assertThat(splitString).containsExactly("1");
     }
 
     @Test
@@ -21,7 +18,6 @@ class StringTest {
         String substringString = "(1,2)".substring(1,4);
         String[] splitString = substringString.split(",");
         assertThat(splitString).contains("1", "2");
-        assertThat(splitString).containsExactly("1", "2");
     }
 
     @Test
