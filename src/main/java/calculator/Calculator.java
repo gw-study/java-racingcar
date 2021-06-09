@@ -1,8 +1,5 @@
 package calculator;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Calculator {
 
     public boolean isBlank(String input) {
@@ -11,21 +8,7 @@ public class Calculator {
     public String[] splitBlank(String str){
         return str.split(" ");
     }
-    public int calculate(int firstNum, int secondNum, String operator){
-       return Operator.calculate(operator, firstNum, secondNum);
-    }
-    public int add(int firstNum, int secondNum){
-        return firstNum + secondNum;
-    }
-    public int subtract(int firstNum, int secondNum) {
-        return firstNum - secondNum;
-    }
-    public int multiply(int firstNum, int secondNum) {
-        return firstNum * secondNum;
-    }
-    public int divide(int firstNum, int secondNum) {
-        return firstNum / secondNum;
-    }
+
     public int getResult(String input){
         if(isBlank(input))
             throw new IllegalArgumentException();
@@ -37,5 +20,8 @@ public class Calculator {
             result = calculate(result, Integer.parseInt(str[i + 2]), str[i + 1]);
         }
         return result;
+    }
+    public int calculate(int firstNum, int secondNum, String operator){
+        return Operator.calculate(operator, firstNum, secondNum);
     }
 }
