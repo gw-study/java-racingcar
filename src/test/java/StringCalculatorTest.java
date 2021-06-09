@@ -20,16 +20,7 @@ class StringCalculatorTest {
     @CsvSource(value = {"1 + 2 * 4 / 6 : 2", "2 + 3 - 7 : -2"}, delimiter = ':')
     @DisplayName("연산에 대한 정확한 계산값을 리턴 하는지 테스트")
     void calculateTest(String input, int answer) {
-
-        String[] array = calculator.enterCommand(input);
-        int result = calculator.parseInt(array[0]);
-
-        for(int i = 0; i < array.length - 2; i=i+2) {
-            String operator = array[i+1];
-            int num = calculator.parseInt(array[i+2]);
-
-            result = calculator.calculation(result, Operation.findOperator(operator), num);
-        }
+        int result = calculator.setInputs(input);
 
         assertThat(result).isEqualTo(answer);
     }
@@ -54,45 +45,37 @@ class StringCalculatorTest {
     @Test
     @DisplayName("+ 연산 기능 테스트")
     void addTest(){
-        String[] inputs = calculator.enterCommand("5 + 3");
-        int num1 = calculator.parseInt(inputs[0]);
-        int num2 = calculator.parseInt(inputs[2]);
+        int result = calculator.setInputs("5 + 3");
+        int answer = 8;
 
-        float result = calculator.calculation(num1, Operation.PLUS, num2);
-        assertThat(result).isEqualTo(8);
+        assertThat(result).isEqualTo(answer);
     }
 
     @Test
     @DisplayName("- 연산 기능 테스트")
     void substractTest(){
-        String[] inputs = calculator.enterCommand("6 - 1");
-        int num1 = calculator.parseInt(inputs[0]);
-        int num2 = calculator.parseInt(inputs[2]);
+        int result = calculator.setInputs("6 - 1");
+        int answer = 5;
 
-        float result = calculator.calculation(num1, Operation.MINUS, num2);
-        assertThat(result).isEqualTo(5);
+        assertThat(result).isEqualTo(answer);
     }
 
     @Test
     @DisplayName("* 연산 기능 테스트")
     void multipleTest(){
-        String[] inputs = calculator.enterCommand("4 * 1");
-        int num1 = calculator.parseInt(inputs[0]);
-        int num2 = calculator.parseInt(inputs[2]);
+        int result = calculator.setInputs("4 * 1");
+        int answer = 4;
 
-        float result = calculator.calculation(num1, Operation.MULTIPLE, num2);
-        assertThat(result).isEqualTo(4);
+        assertThat(result).isEqualTo(answer);
     }
 
     @Test
     @DisplayName("/ 연산 기능 테스트")
     void divideTest(){
-        String[] inputs = calculator.enterCommand("3 / 4");
-        int num1 = calculator.parseInt(inputs[0]);
-        int num2 = calculator.parseInt(inputs[2]);
+        int result = calculator.setInputs("3 / 4");
+        int answer = 0;
 
-        float result = calculator.calculation(num1, Operation.DIVIDE, num2);
-        assertThat(result).isEqualTo(0);
+        assertThat(result).isEqualTo(answer);
     }
 
     @Test
