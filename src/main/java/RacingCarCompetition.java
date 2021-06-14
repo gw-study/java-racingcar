@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 public class RacingCarCompetition {
 
     private int numberOfCar;
@@ -8,38 +6,39 @@ public class RacingCarCompetition {
     private InputView inputView = new InputView();
     private ResultView resultView;
 
-    Car[] cars;
+    public Car[] cars;
 
     RacingCarCompetition() {
         readyForCompetition();
-    }
-
-    public static void main(String[] args) {
-        RacingCarCompetition competition = new RacingCarCompetition();
     }
 
     public void readyForCompetition() {
         numberOfCar = inputView.inputNumberOfCar();
         numberOfTimes = inputView.inputNumberOfTimes();
 
-        readForCar();
+        cars = readyForCar();
+
         startRacing();
     }
 
-    public void readForCar() {
+    public Car[] readyForCar() {
         cars = new Car[numberOfCar];
 
         for (int i = 0; i < numberOfCar; i++) {
-            cars[i] = new Car("-");
+            cars[i] = new Car("-",1);
         }
+
+
+        return cars;
     }
 
     public void startRacing() {
+
         resultView = new ResultView();
 
         for (int i = 0; i < numberOfTimes; i++) {
             for (Car car : cars) {
-                car.move();
+                car.move(car.getRandomNumber());
             }
             System.out.println();
         }

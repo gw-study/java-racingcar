@@ -1,21 +1,35 @@
 class Car {
     private static int LIMIT_RANDOM_NUMBER = 4;
-    private String distance;
+    public Position position;
 
-    Car(String defaultDistance) {
-        distance = defaultDistance;
+    Car(String defaultDistance, int defaultValue) {
+        position = new Position(defaultDistance, defaultValue);
     }
 
     public void showDistance() {
-        System.out.println(distance);
+        System.out.println(position.distance);
     }
 
-    public void move() {
+    public void move(int randomNumber) {
         showDistance();
 
-        int randomNumber = (int)(Math.random() * 10);
         if (randomNumber >= LIMIT_RANDOM_NUMBER) {
-            distance += "-";
+            position.distance += "-";
+            position.value += 1;
         }
+    }
+
+    public int getRandomNumber() {
+        return (int)(Math.random() * 10);
+    }
+}
+
+class Position {
+    String distance;
+    int value;
+
+    Position(String distance, int value) {
+        this.distance = distance;
+        this.value = value;
     }
 }
