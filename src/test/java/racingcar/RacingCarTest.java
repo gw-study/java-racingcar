@@ -30,13 +30,6 @@ public class RacingCarTest {
     }
 
     @Test
-    @DisplayName("자동차 race 위치 테스트")
-    public void getCurrentPosition(){
-        racing.getCars().get(0).moveForward(4);
-        assertThat(racing.getCars().get(0).getCurrentPosition()).isEqualTo(4);
-    }
-
-    @Test
     @DisplayName("자동차 위치 표시")
     public void showRacingCarResult() {
         racing.getCars().get(0).moveForward(4);

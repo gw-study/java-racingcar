@@ -11,9 +11,6 @@ public class Car {
         return currentPosition;
     }
 
-    public int getCurrentPosition(){
-        return currentPosition;
-    }
     public String showTrack(char trackShape) {
         StringBuffer track = new StringBuffer();
 
