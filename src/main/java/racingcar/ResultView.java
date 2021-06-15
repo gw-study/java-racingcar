@@ -5,10 +5,9 @@ public class ResultView {
         System.out.println("실행결과");
     }
 
-    public void showPosition(int count){
-        for(int i = 0; i < count; i++){
-            System.out.print("-");
-        }
-        System.out.println("");
+    private static final char TRACKSHAPE = '-';
+
+    public static void showRacingCarResult(Car car) {
+        System.out.println(car.showTrack(TRACKSHAPE));
     }
 }

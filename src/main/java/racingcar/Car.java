@@ -6,12 +6,20 @@ public class Car {
 
     public int moveForward(int value){
         if(value >= FOUR) {
-            currentPosition++;
+            currentPosition += value;
         }
         return currentPosition;
     }
 
     public int getCurrentPosition(){
         return currentPosition;
+    }
+    public String showTrack(char trackShape) {
+        StringBuffer track = new StringBuffer();
+
+        for(int i=0; i< currentPosition; i++) {
+            track.append(trackShape);
+        }
+        return track.toString();
     }
 }

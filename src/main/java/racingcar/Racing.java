@@ -31,7 +31,7 @@ public class Racing {
             int forwardValue = forward.moveForwardValue();
                 car.moveForward(forwardValue);
 
-            resultView.showPosition(car.getCurrentPosition());
+            resultView.showRacingCarResult(car);
         }
     }
 
