@@ -24,13 +24,13 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("자동차 race 단위 테스트")
-    public void testRacingCar(){
+    public void moveForward(){
         assertThat(racing.getCars().get(0).moveForward(1)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 race 위치 테스트")
-    public void testRacingCarPosition(){
+    public void getCurrentPosition(){
         racing.getCars().get(0).moveForward(1);
         assertThat(racing.getCars().get(0).getCurrentPosition()).isEqualTo(1);
     }

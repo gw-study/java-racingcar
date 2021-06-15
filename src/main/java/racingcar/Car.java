@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private int currentPosition;
+    private int currentPosition = 0;
     static final Integer FOUR = 4;
 
     public int moveForward(int value){
