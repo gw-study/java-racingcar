@@ -9,9 +9,9 @@ class RacingCarCompetitionTest {
     @Test
     @DisplayName("자동차 이동 테스트, 랜덤숫자 4이상일 경우에만 전진")
     void moveTest() {
-        Car car = new Car("-", 1);
+        Car car = new Car("-",1);
         car.move(4);
-        assertThat(car.position.value).isEqualTo(2);
+        assertThat(car.position.getIntegerDistance()).isEqualTo(2);
     }
 
     @ParameterizedTest
@@ -23,5 +23,4 @@ class RacingCarCompetitionTest {
         assertThatThrownBy(()->inputView.isValidInput(input))
                 .isInstanceOf(NullPointerException.class);
     }
-
 }
