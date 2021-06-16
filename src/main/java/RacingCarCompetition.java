@@ -1,23 +1,17 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class RacingCarCompetition {
 
-    private int numberOfCar;
-    private int numberOfTimes;
-
-    private InputView inputView = new InputView();
-    private ResultView resultView;
+    public int numberOfCar;
+    public int numberOfTimes;
 
     public Car[] cars;
+    public List<String[]> history = new ArrayList<>();
 
-    RacingCarCompetition() {
-        readyForCompetition();
-    }
 
     public void readyForCompetition() {
-        numberOfCar = inputView.inputNumberOfCar();
-        numberOfTimes = inputView.inputNumberOfTimes();
-
         cars = readyForCar();
-
         startRacing();
     }
 
@@ -28,19 +22,19 @@ public class RacingCarCompetition {
             cars[i] = new Car("-",1);
         }
 
-
         return cars;
     }
 
     public void startRacing() {
-
-        resultView = new ResultView();
-
         for (int i = 0; i < numberOfTimes; i++) {
-            for (Car car : cars) {
-                car.move(car.getRandomNumber());
+            String[] distances = new String[numberOfCar];
+
+            for (int j = 0 ; j < numberOfCar ; j++) {
+                cars[j].move(cars[j].getRandomNumber());
+                distances[j] = cars[j].position.distance;
             }
-            System.out.println();
+
+            history.add(i, distances);
         }
     }
 }
