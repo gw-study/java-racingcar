@@ -26,14 +26,14 @@ public class RacingCarTest {
     @Test
     @DisplayName("자동차 race 단위 테스트")
     public void moveForward(){
-        assertThat(racing.getCars().get(0).moveForward(4)).isEqualTo(4);
+        assertThat(racing.getCars().get(0).moveForward(4)).isEqualTo(1);
     }
 
     @Test
     @DisplayName("자동차 위치 표시")
     public void showRacingCarResult() {
         racing.getCars().get(0).moveForward(4);
-        assertEquals("----", racing.getCars().get(0).showTrack('-'));
+        assertEquals("-", racing.getCars().get(0).showTrack('-'));
     }
 
 }

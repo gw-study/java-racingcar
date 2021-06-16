@@ -2,11 +2,11 @@ package racingcar;
 
 public class Car {
     private int currentPosition = 0;
-    static final Integer FOUR = 4;
+    private static final int FOUR = 4;
 
     public int moveForward(int value){
         if(value >= FOUR) {
-            currentPosition += value;
+            currentPosition++;
         }
         return currentPosition;
     }

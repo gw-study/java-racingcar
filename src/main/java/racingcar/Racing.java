@@ -5,7 +5,6 @@ import java.util.List;
 
 public class Racing {
     private List<Car> cars = new ArrayList<>();
-    private ResultView resultView= new ResultView();
 
     public List<Car> getCars(){
         return this.cars;
@@ -17,23 +16,12 @@ public class Racing {
         }
     }
 
-    public void startRace(int tryCount){
-        resultView.startResult();
-        for(int i = 0; i < tryCount; i++){
-            System.out.println("");
-            moveCars();
-        }
-    }
-
-    public void moveCars(){
+    public List<Car> moveCars(){
         for(Car car : cars){
             Forward forward = new Forward();
             int forwardValue = forward.moveForwardValue();
-                car.moveForward(forwardValue);
-
-            resultView.showRacingCarResult(car);
+            car.moveForward(forwardValue);
         }
+        return cars;
     }
-
-
 }
