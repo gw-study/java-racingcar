@@ -9,7 +9,7 @@ class CarTest {
     Car carRacing = new Car();
 
     @Test
-    @DisplayName("렌담이 0과 9사이 인지 테스트")
+    @DisplayName("랜덤이 0과 9사이 인지 테스트")
     public void makeRandomTest() {
         assertThat(carRacing.makeRandom()).isBetween(0, 9);
     }
