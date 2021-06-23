@@ -6,9 +6,9 @@ public class InputView {
 
     public static RacingCar inputView() {
         Scanner scanner = new Scanner(System.in);
-        int car = inputCar(scanner);
-        int number = inputNumber(scanner);
-        return new RacingCar(car, number);
+        int countOfCars = inputCar(scanner);
+        int countOfRounds = inputNumber(scanner);
+        return new RacingCar(countOfCars, countOfRounds);
     }
 
     private static int inputCar(Scanner scanner){
