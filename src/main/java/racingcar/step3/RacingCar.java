@@ -1,25 +1,33 @@
 package racingcar.step3;
 
+import java.util.ArrayList;
+
 public class RacingCar {
-    private final int car;
+    private final int countOfCars;
+    private final int countOfRounds;
     private int[] cars;
-    private final int number;
+    private ArrayList movementOfCar;
 
-    public RacingCar(int car, int number) {
-        this.car = car;
-        this.number = number;
+    public RacingCar(int countOfCars, int countOfRounds) {
+        this.countOfCars = countOfCars;
+        this.countOfRounds = countOfRounds;
+        this.cars = new int[countOfCars];
+        this.movementOfCar = new ArrayList<>();
     }
 
-    public int getRacingCarInput(){
-        return car;
+    public int getCountOfCars(){
+        return countOfCars;
     }
 
-    public int[] getRacingCars(){
-        cars = new int[car];
+    public int getCountOfRounds(){
+        return countOfRounds;
+    }
+
+    public int[] getCars(){
         return cars;
     }
 
-    public int getRacingNumberInput(){
-        return number;
+    public ArrayList getMovementOfCar(){
+        return movementOfCar;
     }
 }

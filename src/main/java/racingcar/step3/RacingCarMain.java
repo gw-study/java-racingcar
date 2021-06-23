@@ -1,26 +1,26 @@
 package racingcar.step3;
 
+import java.util.ArrayList;
+
 public class RacingCarMain {
+    private static final int MOVE_CONDITION = 4;
 
     public static void main(String[] args) {
         RacingCar racingCar = InputView.inputView();
-        racing(racingCar);
-    }
-
-    public static void racing(RacingCar racingCar) {
-        int[] cars = racingCar.getRacingCars();
-        ResultView.resultViewStart();
-        for (int i=0; i < racingCar.getRacingNumberInput(); i++){
-            racingOnce(racingCar, cars);
-            ResultView.resultView(cars, i);
+        int[] cars = racingCar.getCars();
+        ArrayList movementOfCar = racingCar.getMovementOfCar();
+        for (int i=0; i < racingCar.getCountOfRounds(); i++){
+            move(racingCar, cars, movementOfCar);
         }
+        ResultView.resultView(racingCar, movementOfCar);
     }
 
-    public static void racingOnce(RacingCar racingCar, int[] cars) {
-        for (int i=0; i < racingCar.getRacingCarInput(); i++){
-            if (RandomNumber.makeRandomNumber() >= 4) {
+    public static void move(RacingCar racingCar, int[] cars, ArrayList movementOfCar) {
+        for (int i=0; i < racingCar.getCountOfCars(); i++){
+            if (RandomNumber.makeRandomNumber() >= MOVE_CONDITION) {
                 cars[i]++;
             }
+            movementOfCar.add(cars[i]);
         }
     }
 }
