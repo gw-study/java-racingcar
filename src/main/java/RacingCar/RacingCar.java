@@ -2,7 +2,6 @@ package RacingCar;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RacingCar {
 
@@ -18,14 +17,11 @@ public class RacingCar {
     public void initTryCnt(int tryCnt) {
         this.tryCnt = tryCnt;
     }
-
-    private int makeRandom() {
-        return new Random().nextInt(10);
-    }
-
+    
     public List<Car> start() {
         for (Car car : carList) {
-            car.move(makeRandom());
+            RandomMove randomNumber = new RandomMove();
+            car.move(randomNumber);
         }
         return carList;
     }
