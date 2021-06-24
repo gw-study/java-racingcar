@@ -1,3 +1,5 @@
+package RacingCar;
+
 public class ResultView {
     private final RacingCar racingCar;
 

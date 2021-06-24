@@ -1,3 +1,5 @@
+package RacingCar;
+
 import java.util.Scanner;
 
 public class InputView {
