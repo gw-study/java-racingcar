@@ -15,7 +15,7 @@ public enum Operator {
         this.intBinaryOperator = intBinaryOperator;
     }
 
-    protected static int calculate(int a, int b, String sign) {
+    public static int calculate(int a, int b, String sign) {
         Operator operator = Arrays.stream(values())
                 .filter(v -> v.operator.equals(sign))
                 .findFirst()

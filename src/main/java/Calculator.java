@@ -18,7 +18,7 @@ public class Calculator {
         return splitStringToInt;
     }
 
-    protected int stringCalculator(String input){
+    public int stringCalculator(String input){
         String[] splitString = stringSplit(input);
         int[] splitStringToInt = splitStringToInt(splitString);
 
