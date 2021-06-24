@@ -1,29 +1,30 @@
+import RacingCar.Car;
+import RacingCar.MovableStrategy;
+import RacingCar.NonMovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvSource;
 
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class CarTest {
-    Car carRacing = new Car();
+    Car car = new Car();
 
     @Test
-    @DisplayName("랜덤이 0과 9사이 인지 테스트")
-    public void makeRandomTest() {
-        assertThat(carRacing.makeRandom()).isBetween(0, 9);
-    }
-
-    @ParameterizedTest(name = "before : {0} , after : {1}")
-    @CsvSource({"-,--", "'',-", "--,---"})
-    @DisplayName("차 움직 일때 '-' 추가 되는지 기능 테스트")
-    public void addMoveTest(String input, String result) {
-        assertThat(carRacing.addMove(input)).isEqualTo(result);
+    @DisplayName("3번 시도시, 자동차는 전진한 결과는  이다(전진 못함)")
+    public void ThreeTryNonMoveTest() {
+        for (int i = 0; i < 3; i++) {
+            car.move(new NonMovableStrategy());
+        }
+        assertThat(car.getCurPosition()).isEqualTo("");
     }
 
     @Test
-    @DisplayName("레이싱 TEST")
-    public void racingStartTest() {
-        carRacing.racingStart(3, 5);
+    @DisplayName("3번 시도시, 자동차가 전진한 결과는 ---이다")
+    public void ThreeTryThreeMoveTest() {
+        for (int i = 0; i < 3; i++) {
+            car.move(new MovableStrategy());
+        }
+        assertThat(car.getCurPosition()).isEqualTo("---");
     }
+
 }
