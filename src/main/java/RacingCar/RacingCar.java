@@ -17,11 +17,10 @@ public class RacingCar {
     public void initTryCnt(int tryCnt) {
         this.tryCnt = tryCnt;
     }
-    
+
     public List<Car> start() {
         for (Car car : carList) {
-            RandomMove randomNumber = new RandomMove();
-            car.move(randomNumber);
+            car.move(new RandomMove());
         }
         return carList;
     }
