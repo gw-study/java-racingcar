@@ -8,10 +8,11 @@ public class Main {
         ResultView resultView = new ResultView();
 
         Racing racing = new Racing();
-        racing.readyCar(inputView.getCarCount());
+        racing.readyCar(inputView.getCars());
         resultView.startResult();
         for(int i = 0; i < inputView.getTryCount(); i++){
             resultView.showRacingCarResult(racing.moveCars());
         }
+        resultView.printWinners(racing.getWinners());
     }
 }

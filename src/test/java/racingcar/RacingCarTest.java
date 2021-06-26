@@ -9,12 +9,12 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingCarTest {
     Racing racing;
+    String[] carNames = {"pobi", "crong", "honux"};
 
     @BeforeEach
     public void setUp(){
         racing = new Racing();
-        racing.readyCar(3);
-        //racing.startRace(1);
+        racing.readyCar(carNames);
     }
 
     @Test
@@ -34,6 +34,13 @@ public class RacingCarTest {
     public void showRacingCarResult() {
         racing.getCars().get(0).moveForward(4);
         assertEquals("-", racing.getCars().get(0).showTrack('-'));
+    }
+
+    @Test
+    @DisplayName("우승자 선정 테스트")
+    public void getWinnersName(){
+        racing.getCars().get(0).moveForward(4);
+        assertThat(racing.getWinners().winnerNames()).isEqualTo("pobi");
     }
 
 }

@@ -10,9 +10,13 @@ public class ResultView {
     private static final char TRACKSHAPE = '-';
 
     public static void showRacingCarResult(List<Car> cars) {
-        System.out.println("");
         for(Car car : cars) {
+            System.out.print(car.getName() + " :");
             System.out.println(car.showTrack(TRACKSHAPE));
         }
+        System.out.println("");
+    }
+    public static void printWinners(Winners winners){
+        System.out.println(String.format( "%s 가 최종 우승했습니다.", winners.winnerNames()));
     }
 }
