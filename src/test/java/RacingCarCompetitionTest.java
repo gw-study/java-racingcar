@@ -9,7 +9,7 @@ class RacingCarCompetitionTest {
     @Test
     @DisplayName("자동차 이동 테스트, 랜덤숫자 4이상일 경우에만 전진")
     void moveTest() {
-        Car car = new Car("-",1);
+        Car car = new Car("-",1, "pkh");
         car.move(4);
         assertThat(car.position.getIntegerDistance()).isEqualTo(2);
     }
@@ -22,5 +22,13 @@ class RacingCarCompetitionTest {
         InputView inputView = new InputView();
         assertThatThrownBy(()->inputView.isValidInput(input))
                 .isInstanceOf(NullPointerException.class);
+    }
+
+    @ParameterizedTest
+    @ValueSource(strings = {"James", "Max, asdf, , adfadf", ""})
+    void canSplitByCommaTest(String input) {
+        InputView inputView = new InputView();
+        assertThatThrownBy(()->inputView.canSplit(input))
+                .isInstanceOf(IllegalArgumentException.class);
     }
 }
