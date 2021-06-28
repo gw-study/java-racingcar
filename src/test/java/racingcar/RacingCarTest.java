@@ -9,6 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RacingCarTest {
     Racing racing;
+    ResultView resultView;
     String[] carNames = {"pobi", "crong", "honux"};
 
     @BeforeEach
@@ -33,7 +34,7 @@ public class RacingCarTest {
     @DisplayName("자동차 위치 표시")
     public void showRacingCarResult() {
         racing.getCars().get(0).moveForward(4);
-        assertEquals("-", racing.getCars().get(0).showTrack('-'));
+        assertEquals("-", resultView.showTrack(racing.getCars().get(0)));
     }
 
     @Test

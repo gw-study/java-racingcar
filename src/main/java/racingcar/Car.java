@@ -27,13 +27,4 @@ public class Car {
     public int maxPosition(int lastPosition){
         return Math.max(currentPosition, lastPosition);
     }
-
-    public String showTrack(char trackShape) {
-        StringBuffer track = new StringBuffer();
-
-        for(int i=0; i< currentPosition; i++) {
-            track.append(trackShape);
-        }
-        return track.toString();
-    }
 }

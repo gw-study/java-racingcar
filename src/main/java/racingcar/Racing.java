@@ -11,8 +11,8 @@ public class Racing {
     }
 
     public void readyCar(String[] cars){
-        for(int i = 0; i < cars.length; i++){
-            readyCars.add(new Car(cars[i], 0));
+        for (String car : cars) {
+            readyCars.add(new Car(car, 0));
         }
     }
 
@@ -33,15 +33,16 @@ public class Racing {
         return winners;
     }
     public void addWinners(Car car, Winners winners){
-        if(car.getPosition() == getMaxPosition())
+        if(car.getPosition() == getMaxPosition()) {
             winners.addWinner(car);
+        }
     }
 
     public int getMaxPosition(){
-        int position = readyCars.get(0).getPosition();
-        for(Car car : readyCars){
-            position = car.maxPosition(position);
+        int maxPosition = 0;
+        for (Car car : readyCars) {
+            maxPosition = car.maxPosition(maxPosition);
         }
-        return position;
+        return maxPosition;
     }
 }
