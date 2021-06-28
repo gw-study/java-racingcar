@@ -1,14 +1,10 @@
 public class Position {
-    String distance;
-    int value;
+    public String distance;
+    public int value;
 
     public Position(String distance, int value) {
         this.distance = distance;
         this.value = value;
-    }
-
-    public String getDistance() {
-        return distance;
     }
 
     public int getIntegerDistance() {
