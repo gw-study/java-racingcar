@@ -16,11 +16,11 @@ public class Winners {
         this.winners.add(car);
     }
 
-    public String winnerNames(){
+    public List<String> winnerNames(){
         List<String> winnerNames = new ArrayList<>();
         for(Car car : winners){
             winnerNames.add(car.getName());
         }
-        return String.join(",", winnerNames);
+        return winnerNames;
     }
 }

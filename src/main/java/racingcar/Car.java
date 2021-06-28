@@ -1,9 +1,9 @@
 package racingcar;
 
 public class Car {
-    private int currentPosition = 0;
     private static final int FOUR = 4;
     private final Name name;
+    private int currentPosition = 0;
 
     public Car(String name, int position) {
         this.name = new Name(name);
@@ -25,9 +25,7 @@ public class Car {
     }
 
     public int maxPosition(int lastPosition){
-        if(currentPosition > lastPosition)
-            return currentPosition;
-        return lastPosition;
+        return Math.max(currentPosition, lastPosition);
     }
 
     public String showTrack(char trackShape) {

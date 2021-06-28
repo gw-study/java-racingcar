@@ -14,9 +14,9 @@ public class ResultView {
             System.out.print(car.getName() + " :");
             System.out.println(car.showTrack(TRACKSHAPE));
         }
-        System.out.println("");
+        System.out.println();
     }
     public static void printWinners(Winners winners){
-        System.out.println(String.format( "%s 가 최종 우승했습니다.", winners.winnerNames()));
+        System.out.println(String.format( "%s 가 최종 우승했습니다.", String.join(",", winners.winnerNames())));
     }
 }

@@ -39,8 +39,10 @@ public class RacingCarTest {
     @Test
     @DisplayName("우승자 선정 테스트")
     public void getWinnersName(){
-        racing.getCars().get(0).moveForward(4);
-        assertThat(racing.getWinners().winnerNames()).isEqualTo("pobi");
+        racing.getCars().get(0).moveForward(1);
+        racing.getCars().get(1).moveForward(5);
+        racing.getCars().get(2).moveForward(2);
+        assertThat(String.join(",", racing.getWinners().winnerNames())).isEqualTo("crong");
     }
 
 }
