@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+
 import static org.assertj.core.api.Java6Assertions.assertThat;
 
 class RacingCarTest {
@@ -11,19 +13,13 @@ class RacingCarTest {
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar(3,5);
+        racingCar = new RacingCar("pobi,crong,honux",5);
     }
 
     @Test
     @DisplayName("자동차 수 입력값 테스트")
     void getRacingCarInput() {
         assertThat(racingCar.getCountOfCars()).isEqualTo(3);
-    }
-
-    @Test
-    @DisplayName("자동차 수 배열 생성 테스트")
-    void getRacingCars() {
-        assertThat(racingCar.getCars()).isEqualTo(new int[3]);
     }
 
     @Test
@@ -41,8 +37,22 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차 경주 1회 전진 테스트")
     void move() {
-        RacingCarMain.move(racingCar, racingCar.getCars(), racingCar.getMovementOfCar());
+        racingCar.race(racingCar);
         assertThat(racingCar.getMovementOfCar().size()).isEqualTo(racingCar.getCountOfCars());
+    }
+
+    @Test
+    @DisplayName("자동차 객체 리스트 생성 테스트")
+    void enterNameOfCars() {
+        ArrayList<Car> infoOfCars = racingCar.enterNameOfCars(racingCar.getNameOfCars());
+        assertThat(infoOfCars.size()).isEqualTo(racingCar.getCountOfCars());
+    }
+
+    @Test
+    @DisplayName("자동차 경주 우승자 찾기 테스트")
+    void findWinner() {
+        ArrayList<String> winner = racingCar.findWinner(racingCar.enterNameOfCars(racingCar.getNameOfCars()));
+        assertThat(winner.size()).isBetween(1, racingCar.getCountOfCars());
     }
 
 }
