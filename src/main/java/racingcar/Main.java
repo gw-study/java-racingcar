@@ -7,8 +7,7 @@ public class Main {
         inputView.inputCarRacingEvent();
         ResultView resultView = new ResultView();
 
-        Racing racing = new Racing();
-        racing.readyCar(inputView.getCars());
+        Racing racing = new Racing(inputView.getCars());
         resultView.startResult();
         for(int i = 0; i < inputView.getTryCount(); i++){
             resultView.showRacingCarResult(racing.moveCars());

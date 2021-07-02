@@ -3,11 +3,11 @@ package racingcar;
 import java.util.List;
 
 public class ResultView {
+    private static final char TRACKSHAPE = '-';
+
     public void startResult(){
         System.out.println("실행결과");
     }
-
-    private static final char TRACKSHAPE = '-';
 
     public void showRacingCarResult(List<Car> cars) {
         for(Car car : cars) {
@@ -16,8 +16,8 @@ public class ResultView {
         }
         System.out.println();
     }
-    public static void printWinners(Winners winners){
-        System.out.println(String.format( "%s 가 최종 우승했습니다.", String.join(",", winners.winnerNames())));
+    public void printWinners(Winners winners){
+        System.out.println(String.format( "%s 가 최종 우승했습니다.", String.join(",", winners.findWinnerCarNames())));
     }
     public String showTrack(Car car) {
         StringBuffer track = new StringBuffer();
