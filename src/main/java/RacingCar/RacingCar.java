@@ -7,13 +7,13 @@ public class RacingCar {
 
     private final List<Car> carList = new ArrayList<>();
     private int tryCnt;
-    
+
     RacingCar(String carName, int tryCnt) {
         initCars(carName);
         this.tryCnt = tryCnt;
     }
 
-    public void initCars(String carName) {
+    private void initCars(String carName) {
         String[] carNameList = carName.split(",");
         for (int i = 0; i < carNameList.length; i++) {
             carList.add(new Car(carNameList[i]));

@@ -1,11 +1,12 @@
 package RacingCar;
 
 public class Car {
+    private final CarName carName;
+
     private String curPosition = "";
-    private String carName = "";
 
     public Car(String carName) {
-        this.carName = carName;
+        this.carName = new CarName(carName);
     }
 
     public String move(MoveStrategy moveStrategy) {
@@ -20,7 +21,7 @@ public class Car {
     }
 
     public String getCarName() {
-        return carName;
+        return carName.getCarName();
     }
 
 }
