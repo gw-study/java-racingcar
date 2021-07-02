@@ -1,20 +1,17 @@
 package RacingCar;
 
-public class ResultView {
-    private final RacingCar racingCar;
+import java.util.List;
 
-    public ResultView(RacingCar racingCar) {
-        this.racingCar = racingCar;
+public class ResultView {
+
+    ResultView() {
+        System.out.println("실행 결과");
     }
 
-    public void printCar() {
+    public void printCar(List<Car> carList) {
         System.out.println();
-        System.out.println("실행 결과");
-        for (int i = 0; i < racingCar.tryCnt; i++) {
-            System.out.println();
-            for (Car car : racingCar.start()) {
-                System.out.println(car.getCurPosition());
-            }
+        for (Car car : carList) {
+            System.out.println(car.getCurPosition());
         }
     }
 }

@@ -1,6 +1,4 @@
 import RacingCar.Car;
-import RacingCar.MovableStrategy;
-import RacingCar.NonMovableStrategy;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +11,7 @@ class CarTest {
     @DisplayName("3번 시도시, 자동차는 전진한 결과는  이다(전진 못함)")
     public void ThreeTryNonMoveTest() {
         for (int i = 0; i < 3; i++) {
-            car.move(new NonMovableStrategy());
+            car.move(() -> false);
         }
         assertThat(car.getCurPosition()).isEqualTo("");
     }
@@ -22,7 +20,7 @@ class CarTest {
     @DisplayName("3번 시도시, 자동차가 전진한 결과는 ---이다")
     public void ThreeTryThreeMoveTest() {
         for (int i = 0; i < 3; i++) {
-            car.move(new MovableStrategy());
+            car.move(() -> true);
         }
         assertThat(car.getCurPosition()).isEqualTo("---");
     }
