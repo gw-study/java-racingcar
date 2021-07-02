@@ -5,10 +5,10 @@ public class CarName {
     private final String carName;
 
     public CarName(String carName) {
-        if (carName.length() > NAME_LIMIT) {
+        this.carName = carName.trim();
+        if (this.carName.length() > NAME_LIMIT) {
             throw new IllegalArgumentException("자동차 이름은 5자를 초과할 수 없습니다");
         }
-        this.carName = carName.trim();
     }
 
     public String getCarName() {
