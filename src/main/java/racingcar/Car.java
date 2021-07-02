@@ -1,7 +1,7 @@
 package racingcar;
 
 public class Car {
-    private static final int FOUR = 4;
+    private static final int MOVABLE_NUMBER = 4;
     private final Name name;
     private int currentPosition = 0;
 
@@ -11,7 +11,7 @@ public class Car {
     }
 
     public int moveForward(int value){
-        if(value >= FOUR) {
+        if(value >= MOVABLE_NUMBER) {
             currentPosition++;
         }
         return currentPosition;
