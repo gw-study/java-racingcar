@@ -10,5 +10,8 @@ public class Main {
             resultView.printCar(racingCar.start());
         }
 
+        WinnerCars winnerCars = new WinnerCars(racingCar.getCarList());
+        resultView.printWinner(winnerCars.findWinnerCarList());
+
     }
 }

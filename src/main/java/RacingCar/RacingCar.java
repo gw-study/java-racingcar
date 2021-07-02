@@ -20,6 +20,10 @@ public class RacingCar {
         }
     }
 
+    public List<Car> getCarList() {
+        return carList;
+    }
+
     public List<Car> start() {
         for (Car car : carList) {
             car.move(new RandomMovingStrategy());

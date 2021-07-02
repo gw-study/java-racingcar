@@ -14,4 +14,12 @@ public class ResultView {
             System.out.println(car.getCarName() + " : " + car.getCurPosition());
         }
     }
+
+    public void printWinner(List<Car> carList) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Car car : carList) {
+            stringBuilder.append(car.getCarName());
+        }
+        System.out.println(stringBuilder.toString() + "가 최종 우승했습니다.");
+    }
 }
