@@ -11,7 +11,7 @@ public class ResultView {
     public void printCar(List<Car> carList) {
         System.out.println();
         for (Car car : carList) {
-            System.out.println(car.getCurPosition());
+            System.out.println(car.getCarName() + " : " + car.getCurPosition());
         }
     }
 }
