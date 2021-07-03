@@ -1,4 +1,5 @@
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private final static String textOfResult = "결과보기";
@@ -18,24 +19,14 @@ public class ResultView {
 
         for (int i = 0; i < historySize; i++) {
             for (Car car : histories.get(i)) {
-                System.out.println(car.name + ": " + car.position.distance);
+                System.out.println(car.getName() + ": " + car.getPositionString());
             }
             System.out.println();
         }
     }
 
     public void showWinner() {
-        int numberOfWinner = winners.size();
-        String alertOfWinner = "";
-
-        for (int i = 0; i < numberOfWinner; i++) {
-            alertOfWinner += winners.get(i).name;
-
-            if (numberOfWinner != 1 && i != numberOfWinner - 1) {
-                alertOfWinner += ", ";
-            }
-        }
-
+        String alertOfWinner = winners.stream().map(Car::getName).collect(Collectors.joining(", "));
         alertOfWinner += suffixOfText;
 
         System.out.println(alertOfWinner);
