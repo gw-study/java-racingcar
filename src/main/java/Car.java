@@ -1,4 +1,4 @@
-public class Car implements Comparable<Car> {
+public class Car {
     private final static int LIMIT_RANDOM_NUMBER = 4;
     private final static int LIMIT_MAX_RANDOM = 10;
     private Position position;
@@ -10,15 +10,18 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(int randomNumber) {
-
         if (randomNumber >= LIMIT_RANDOM_NUMBER) {
             position.setDistance();
             position.setIntegerDistance();
         }
     }
 
-    public Position getPosition() {
-        return this.position;
+    public int getPositionInteger() {
+        return this.position.getIntegerDistance();
+    }
+
+    public String getPositionString() {
+        return this.position.getDistance();
     }
 
     public int getRandomNumber() {
@@ -26,14 +29,4 @@ public class Car implements Comparable<Car> {
     }
     public String getName() { return this.name; }
 
-    @Override
-    public int compareTo(Car car) {
-        if (this.getPosition().getIntegerDistance() < car.getPosition().getIntegerDistance()) {
-            return -1;
-        } else if (this.getPosition().getIntegerDistance() == car.getPosition().getIntegerDistance()) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
 }
