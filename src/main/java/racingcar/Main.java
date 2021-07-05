@@ -1,5 +1,7 @@
 package racingcar;
 
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -12,6 +14,8 @@ public class Main {
         for(int i = 0; i < inputView.getTryCount(); i++){
             resultView.showRacingCarResult(racing.moveCars());
         }
-        resultView.printWinners(racing.getWinners());
+        Winners winners = new Winners(racing.getCars());
+        List<Car> winnersCar = winners.winnerCars();
+        resultView.printWinners(winners.findWinnerCarNames(winnersCar));
     }
 }

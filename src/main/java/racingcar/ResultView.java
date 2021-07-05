@@ -16,8 +16,8 @@ public class ResultView {
         }
         System.out.println();
     }
-    public void printWinners(Winners winners){
-        System.out.println(String.format( "%s 가 최종 우승했습니다.", String.join(",", winners.findWinnerCarNames())));
+    public void printWinners(List<String> carNames){
+        System.out.println(String.format( "%s 가 최종 우승했습니다.", String.join(",", carNames)));
     }
     public String showTrack(Car car) {
         StringBuffer track = new StringBuffer();

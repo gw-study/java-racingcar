@@ -54,9 +54,9 @@ public class RacingCarTest {
         cars.add(car2);
         cars.add(car3);
 
-        racing = new Racing(cars);
+        Winners winners = new Winners(cars);
 
-        assertThat(String.join(",", racing.getWinners().findWinnerCarNames())).isEqualTo("pobi");
+        assertThat(winners.winnerCars()).containsExactly(car1);
     }
 
 }

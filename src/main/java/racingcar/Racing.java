@@ -38,18 +38,4 @@ public class Racing {
         return readyCars;
     }
 
-    public Winners getWinners(){
-        Winners winners = new Winners();
-        for(Car car : readyCars) {
-            addWinners(car, winners);
-        }
-        return winners;
-    }
-    public void addWinners(Car car, Winners winners){
-        if(car.getPosition() == winners.getMaxPosition(readyCars)) {
-            winners.addWinner(car);
-        }
-    }
-
-
 }
