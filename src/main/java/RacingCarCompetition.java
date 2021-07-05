@@ -1,67 +1,43 @@
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCarCompetition {
 
-    private final int numberOfCar;
-    private final int numberOfTimes;
-    private final String[] names;
-    private final Round round;
+    public List<Car> cars;
+    public List<List<Car>> history;
 
-    public List<Car> cars = new ArrayList<>();
-    public List<Car[]> history = new ArrayList<>();
-
-    public RacingCarCompetition(String[] names, int numberOfTimes) {
-        this.names = names;
-        this.numberOfTimes = numberOfTimes;
-        this.numberOfCar = names.length;
-        this.round = new Round(numberOfTimes);
-        readyForCar();
+    public RacingCarCompetition(List<Car> cars) {
+        this.history = new ArrayList<>();
+        this.cars = cars.stream().distinct().collect(Collectors.toList());
     }
 
-    private void readyForCar() {
-        for (int i = 0; i < numberOfCar; i++) {
-            cars.add(new Car("-", 1, names[i]));
-        }
+    public RacingCarCompetition(String[] names){
+        this(Arrays.stream(names).map(Car::new).collect(Collectors.toList()));
     }
 
-    public List<Car[]> startRacing() {
-
-        while (round.isContinuedRound()) {
+    public void ready(int times) {
+        for (int i = 0; i<times; i++) {
             start();
-            round.reduceRound();
         }
-
-        return history;
     }
 
     public void start() {
-        Car[] c = new Car[numberOfCar];
-
-        for (int j = 0 ; j < numberOfCar ; j++) {
-            cars.get(j).move(cars.get(j).getRandomNumber());
-            c[j] = new Car(cars.get(j).getPositionString(), cars.get(j).getPositionInteger(), cars.get(j).getName());
+        for (Car car : this.cars) {
+            car.move(car.getRandomNumber());
         }
 
-        history.add(c);
+        this.history.add(getCars());
     }
 
-    public List<Car> getWinner() {
-        int lastIndex = numberOfTimes-1;
-        Car[] last = history.get(lastIndex);
+    public List<Car> getCars() {
+        return this.cars;
+    }
 
-        List<Car> winners = new ArrayList<>();
+    public List<Car> getWinners() {
+        Car winner = this.cars.stream()
+                .max(Comparator.comparingInt(Car::getPositionInteger))
+                .orElseThrow(IllegalStateException::new);
 
-        Car winner = Arrays.stream(last).max(Comparator.comparingInt(Car::getPositionInteger)).orElseThrow(NoSuchElementException::new);
-        Car first = new Car(last[0].getPositionString(), last[0].getPositionInteger(), last[0].getName());
-
-        winners.add(0, first);
-
-        for (int i = 1; i < last.length; i++) {
-            if (winner.getPositionInteger() == last[i].getPositionInteger()) {
-                winners.add(last[i]);
-            }
-        }
-
-        return winners;
+        return this.cars.stream().filter(car -> car.isSamePosition(winner)).collect(Collectors.toList());
     }
 }

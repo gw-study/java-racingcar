@@ -4,9 +4,9 @@ public class Car {
     private Position position;
     private String name;
 
-    public Car(String defaultDistance, int defaultValue, String name) {
+    public Car(String name) {
         this.name = name;
-        this.position = new Position(defaultDistance, defaultValue);
+        this.position = new Position("-",1);
     }
 
     public void move(int randomNumber) {
@@ -14,6 +14,16 @@ public class Car {
             position.setDistance();
             position.setIntegerDistance();
         }
+    }
+
+    public Car makeCar(String name, int position) {
+        Car car = new Car(name);
+
+        for (int i = 0; i<position; i++) {
+            car.move(LIMIT_RANDOM_NUMBER);
+        }
+
+        return car;
     }
 
     public int getPositionInteger() {
@@ -29,4 +39,7 @@ public class Car {
     }
     public String getName() { return this.name; }
 
+    public boolean isSamePosition(Car other) {
+        return this.position.getIntegerDistance() == other.position.getIntegerDistance();
+    }
 }

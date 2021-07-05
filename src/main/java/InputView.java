@@ -26,31 +26,15 @@ public class InputView {
         return Integer.parseInt(input);
     }
 
-    public String[] canSplit(String input) throws IllegalArgumentException {
+    public String[] isValidString(String input) throws IllegalArgumentException {
+        String[] names = input.split(",");
 
-        if (input.contains(",")) {
-            String[] inputs = input.split(",");
-
-            for (String name: inputs) {
-                if (isEmpty(name)) {
-                    throw new IllegalArgumentException();
-                }
+        for (String name: names) {
+            if (name.trim().isEmpty()) {
+                throw new IllegalArgumentException();
             }
-
-            return inputs;
         }
 
-        String[] name = new String[1];
-        name[0] = input;
-
-        return name;
-    }
-
-    public boolean isEmpty(String name) {
-        return name.isEmpty();
-    }
-
-    public String[] isValidString(String input) {
-        return canSplit(input);
+        return names;
     }
 }

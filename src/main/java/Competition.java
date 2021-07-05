@@ -1,16 +1,17 @@
-import java.util.List;
-
 public class Competition {
     public static void main(String[] args) {
         InputView inputView = new InputView();
 
-        RacingCarCompetition competition = new RacingCarCompetition(inputView.inputNameOfCars(), inputView.inputNumberOfTimes());
+        String[] names = inputView.inputNameOfCars();
+        int times = inputView.inputNumberOfTimes();
 
-        List<Car[]> results = competition.startRacing();
-        List<Car> winners = competition.getWinner();
+        RacingCarCompetition competition = new RacingCarCompetition(names);
+        competition.ready(times);
 
-        ResultView resultView = new ResultView(results, winners);
-        resultView.showDistance();
-        resultView.showWinner();
+        ResultView resultView = new ResultView(competition.history);
+        resultView.showResultsMessage();
+
+        resultView.getHistories();
+        resultView.showWinner(competition.getWinners());
     }
 }
