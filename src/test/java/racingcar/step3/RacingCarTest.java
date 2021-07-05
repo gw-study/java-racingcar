@@ -10,10 +10,12 @@ import static org.assertj.core.api.Java6Assertions.assertThat;
 
 class RacingCarTest {
     RacingCar racingCar;
+    Winner winner;
 
     @BeforeEach
     void setUp() {
-        racingCar = new RacingCar("pobi,crong,honux",5);
+        racingCar = new RacingCar("pobi,crong,honux", 5);
+        winner = new Winner();
     }
 
     @Test
@@ -31,7 +33,7 @@ class RacingCarTest {
     @Test
     @DisplayName("랜덤값 생성 테스트")
     void makeRandomNumber() {
-        assertThat(RandomNumber.makeRandomNumber()).isBetween(0,9);
+        assertThat(RandomNumber.makeRandomNumber()).isBetween(0, 9);
     }
 
     @Test
@@ -44,15 +46,27 @@ class RacingCarTest {
     @Test
     @DisplayName("자동차 객체 리스트 생성 테스트")
     void enterNameOfCars() {
-        ArrayList<Car> infoOfCars = racingCar.enterNameOfCars(racingCar.getNameOfCars());
+        ArrayList<Car> infoOfCars = racingCar.getInfoOfCars();
         assertThat(infoOfCars.size()).isEqualTo(racingCar.getCountOfCars());
     }
 
     @Test
     @DisplayName("자동차 경주 우승자 찾기 테스트")
     void findWinner() {
-        ArrayList<String> winner = racingCar.findWinner(racingCar.enterNameOfCars(racingCar.getNameOfCars()));
-        assertThat(winner.size()).isBetween(1, racingCar.getCountOfCars());
+//        자동차 = A,B,C 3대
+//        시도횟수 = 2회 라고 하면,
+
+//1회
+        racingCar.move(0, 1); //0칸
+        racingCar.move(1, 2); //0칸
+        racingCar.move(2, 8); //1칸
+//2회
+        racingCar.move(0, 1); //0칸
+        racingCar.move(1, 5); //1칸
+        racingCar.move(2, 6); //2칸
+
+        winner.findWinner(racingCar);
+        assertThat(winner.getWinner().get(0)).isEqualTo("honux");
     }
 
 }
