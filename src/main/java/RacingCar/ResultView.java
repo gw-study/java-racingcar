@@ -5,7 +5,7 @@ import java.util.List;
 public class ResultView {
     private final String displayPosition = "-";
 
-    ResultView() {
+    public ResultView() {
         System.out.println("실행 결과");
     }
 
