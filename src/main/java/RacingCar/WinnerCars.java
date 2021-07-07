@@ -4,18 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class WinnerCars {
-    private final int MAX_POSITION;
     private final List<Car> carList;
+    private final int maxPosition;
 
     public WinnerCars(List<Car> carList) {
         this.carList = carList;
-        MAX_POSITION = getMaxPosition();
+        maxPosition = getMaxPosition();
     }
 
     private int getMaxPosition() {
         int maxPosition = 0;
         for (Car car : carList) {
-            maxPosition = Math.max(maxPosition, car.getCurPosition().length());
+            maxPosition = Math.max(maxPosition, car.getCurPosition());
         }
         return maxPosition;
     }
@@ -29,7 +29,7 @@ public class WinnerCars {
     }
 
     private void addWinnerCar(Car car, List<Car> winnerCarList) {
-        if (car.getCurPosition().length() == MAX_POSITION) {
+        if (car.getCurPosition() == maxPosition) {
             winnerCarList.add(car);
         }
     }
