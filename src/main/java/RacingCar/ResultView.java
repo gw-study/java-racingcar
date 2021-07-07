@@ -1,6 +1,7 @@
 package RacingCar;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ResultView {
     private final String displayPosition = "-";
@@ -26,10 +27,7 @@ public class ResultView {
     }
 
     public void printWinner(List<Car> carList) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Car car : carList) {
-            stringBuilder.append(String.join(", ", car.getCarName()));
-        }
-        System.out.println(stringBuilder.toString() + "가 최종 우승했습니다.");
+        String winnerPrint = carList.stream().map(Car::getCarName).collect(Collectors.joining(", ")) + " 가 최종 우승했습니다.";
+        System.out.println(winnerPrint);
     }
 }
