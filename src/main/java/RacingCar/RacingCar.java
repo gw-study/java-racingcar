@@ -15,8 +15,8 @@ public class RacingCar {
 
     private void initCars(String carName) {
         String[] carNameList = carName.split(",");
-        for (int i = 0; i < carNameList.length; i++) {
-            carList.add(new Car(carNameList[i]));
+        for (String car : carNameList) {
+            carList.add(new Car(car));
         }
     }
 

@@ -8,10 +8,7 @@ public class RandomMovingStrategy implements MoveStrategy {
 
     @Override
     public boolean isMove() {
-        if (getRandomNumber() >= MOVABLE_NUM) {
-            return true;
-        }
-        return false;
+        return getRandomNumber() >= MOVABLE_NUM;
     }
 
     private int getRandomNumber() {
