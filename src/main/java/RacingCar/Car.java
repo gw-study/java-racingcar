@@ -3,20 +3,19 @@ package RacingCar;
 public class Car {
     private final CarName carName;
 
-    private String curPosition = "";
+    private int curPosition = 0;
 
     public Car(String carName) {
         this.carName = new CarName(carName);
     }
 
-    public String move(MoveStrategy moveStrategy) {
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            curPosition += "-";
+            ++curPosition;
         }
-        return curPosition;
     }
 
-    public String getCurPosition() {
+    public int getCurPosition() {
         return curPosition;
     }
 
