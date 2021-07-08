@@ -6,22 +6,37 @@ import java.util.List;
 public class RacingCar {
 
     private final List<Car> carList = new ArrayList<>();
-    public int tryCnt;
+    private int tryCnt;
 
-    public void initCars(int carCnt) {
-        for (int i = 0; i < carCnt; i++) {
-            carList.add(new Car());
+    RacingCar(String carName, int tryCnt) {
+        initCars(carName);
+        this.tryCnt = tryCnt;
+    }
+
+    private void initCars(String carName) {
+        String[] carNameList = carName.split(",");
+        for (String car : carNameList) {
+            carList.add(new Car(car));
         }
     }
 
-    public void initTryCnt(int tryCnt) {
-        this.tryCnt = tryCnt;
+    public List<Car> getCarList() {
+        return carList;
     }
 
     public List<Car> start() {
         for (Car car : carList) {
-            car.move(new RandomMove());
+            car.move(new RandomMovingStrategy());
         }
         return carList;
     }
+
+    public boolean racing() {
+        if (tryCnt > 0) {
+            tryCnt--;
+            return true;
+        }
+        return false;
+    }
+
 }

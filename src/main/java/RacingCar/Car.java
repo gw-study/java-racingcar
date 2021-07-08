@@ -1,18 +1,26 @@
 package RacingCar;
 
 public class Car {
+    private final CarName carName;
 
-    private static final int RANDOM_LIMIT_NUM = 4;
-    private String curPosition = "";
+    private int curPosition = 0;
 
-    public String move(MoveStrategy moveStrategy) {
+    public Car(String carName) {
+        this.carName = new CarName(carName);
+    }
+
+    public void move(MoveStrategy moveStrategy) {
         if (moveStrategy.isMove()) {
-            curPosition += "-";
+            ++curPosition;
         }
+    }
+
+    public int getCurPosition() {
         return curPosition;
     }
 
-    public String getCurPosition() {
-        return curPosition;
+    public String getCarName() {
+        return carName.getCarName();
     }
+
 }

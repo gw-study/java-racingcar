@@ -3,12 +3,15 @@ package RacingCar;
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
+        RacingCar racingCar = new RacingCar(inputView.inputCarName(), inputView.tryCount());
+        ResultView resultView = new ResultView();
 
-        RacingCar racingCar = new RacingCar();
-        racingCar.initCars(inputView.carCount());
-        racingCar.initTryCnt(inputView.tryCount());
+        while (racingCar.racing()) {
+            resultView.printCar(racingCar.start());
+        }
 
-        ResultView resultView = new ResultView(racingCar);
-        resultView.printCar();
+        WinnerCars winnerCars = new WinnerCars(racingCar.getCarList());
+        resultView.printWinner(winnerCars.findWinnerCarList());
+
     }
 }
