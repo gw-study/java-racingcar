@@ -14,21 +14,21 @@ class CarTest {
     Car car = new Car("ahreu");
 
     @Test
-    @DisplayName("3번 시도시, 자동차는 전진한 결과는  이다(전진 못함)")
+    @DisplayName("3번 시도시, 자동차는 전진한 위치는  0이다(전진 못함)")
     public void ThreeTryNonMoveTest() {
         for (int i = 0; i < 3; i++) {
             car.move(() -> false);
         }
-        assertThat(car.getCurPosition()).isEqualTo("");
+        assertThat(car.getCurPosition()).isEqualTo(0);
     }
 
     @Test
-    @DisplayName("3번 시도시, 자동차가 전진한 결과는 ---이다")
+    @DisplayName("3번 시도시, 자동차가 전진한 위치는 3이다")
     public void ThreeTryThreeMoveTest() {
         for (int i = 0; i < 3; i++) {
             car.move(() -> true);
         }
-        assertThat(car.getCurPosition()).isEqualTo("---");
+        assertThat(car.getCurPosition()).isEqualTo(3);
     }
 
     @Test
