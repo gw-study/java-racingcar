@@ -19,7 +19,7 @@ public class ResultView {
 
     private String printPosition(Car car) {
         int carPosition = car.getCurPosition();
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < carPosition; i++) {
             result.append(displayPosition);
         }
