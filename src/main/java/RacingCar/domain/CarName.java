@@ -1,4 +1,4 @@
-package RacingCar;
+package RacingCar.domain;
 
 public class CarName {
     private final int NAME_LIMIT = 5;

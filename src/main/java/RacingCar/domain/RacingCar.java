@@ -1,4 +1,6 @@
-package RacingCar;
+package RacingCar.domain;
+
+import RacingCar.utils.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,7 +10,7 @@ public class RacingCar {
     private final List<Car> carList = new ArrayList<>();
     private int tryCnt;
 
-    RacingCar(String carName, int tryCnt) {
+    public RacingCar(String carName, int tryCnt) {
         initCars(carName);
         this.tryCnt = tryCnt;
     }
