@@ -1,20 +1,14 @@
 public class Position {
-    private String distance;
-    private int value;
+    private int distance;
 
-    public Position(String distance, int value) {
+    public Position(int distance) {
         this.distance = distance;
-        this.value = value;
     }
 
-    public String getDistance() { return this.distance; }
-    public void setDistance() {
-        this.distance += "-";
+    public int getDistance() {
+        return distance;
     }
-    public int getIntegerDistance() {
-        return value;
-    }
-    public void setIntegerDistance() {
-        this.value += 1;
+    public void increaseDistance() {
+        this.distance += 1;
     }
 }
