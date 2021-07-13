@@ -15,7 +15,7 @@ class RacingCarCompetitionTest {
     void moveTest() {
         Car car = new Car("pkh");
         car.move(4);
-        assertThat(car.getPositionInteger()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(1);
     }
 
     @ParameterizedTest
