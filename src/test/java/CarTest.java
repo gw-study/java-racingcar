@@ -1,6 +1,6 @@
-import RacingCar.Car;
-import RacingCar.CarName;
-import RacingCar.WinnerCars;
+import RacingCar.domain.Car;
+import RacingCar.domain.CarName;
+import RacingCar.domain.WinnerCars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
