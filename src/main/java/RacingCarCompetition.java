@@ -1,40 +1,35 @@
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class RacingCarCompetition {
 
-    public int numberOfCar;
-    public int numberOfTimes;
+    private final List<Car> cars;
 
-    public Car[] cars;
-    public List<String[]> history = new ArrayList<>();
-
-
-    public void readyForCompetition() {
-        cars = readyForCar();
-        startRacing();
+    public RacingCarCompetition(String[] names){
+        this(Arrays.stream(names).map(Car::new).collect(Collectors.toList()));
     }
 
-    public Car[] readyForCar() {
-        cars = new Car[numberOfCar];
-
-        for (int i = 0; i < numberOfCar; i++) {
-            cars[i] = new Car("-",1);
-        }
-
-        return cars;
+    public RacingCarCompetition(List<Car> cars) {
+        this.cars = cars.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
-    public void startRacing() {
-        for (int i = 0; i < numberOfTimes; i++) {
-            String[] distances = new String[numberOfCar];
-
-            for (int j = 0 ; j < numberOfCar ; j++) {
-                cars[j].move(cars[j].getRandomNumber());
-                distances[j] = cars[j].position.distance;
-            }
-
-            history.add(i, distances);
+    public void start() {
+        for (Car car : cars) {
+            car.move(car.getRandomNumber());
         }
+    }
+
+    public List<Car> getCars() {
+        return this.cars;
+    }
+
+    public List<Car> getWinners() {
+        Car winner = this.cars.stream()
+                .max(Comparator.comparingInt(Car::getPosition))
+                .orElseThrow(IllegalStateException::new);
+
+        return this.cars.stream().filter(car -> car.isSamePosition(winner)).collect(Collectors.toList());
     }
 }
