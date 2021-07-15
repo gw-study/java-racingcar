@@ -1,5 +1,6 @@
 import RacingCar.domain.Car;
 import RacingCar.domain.CarName;
+import RacingCar.domain.TryCnt;
 import RacingCar.domain.WinnerCars;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,14 @@ class CarTest {
         assertThatThrownBy(() -> new CarName("abcdefg"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageEndingWith("자동차 이름은 5자를 초과할 수 없습니다");
+    }
+
+    @Test
+    @DisplayName("시도 횟수 초기세팅이 0이하일때 에러")
+    public void chkTryCnt() {
+        assertThatThrownBy(() -> new TryCnt(0))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageEndingWith("시도 횟수는 0 이하로 설정할 수 없습니다");
     }
 
     @Test
