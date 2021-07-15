@@ -8,11 +8,11 @@ import java.util.List;
 public class RacingCar {
 
     private final List<Car> carList = new ArrayList<>();
-    private int tryCnt;
+    private final TryCnt tryCnt;
 
     public RacingCar(String carName, int tryCnt) {
         initCars(carName);
-        this.tryCnt = tryCnt;
+        this.tryCnt = new TryCnt(tryCnt);
     }
 
     private void initCars(String carName) {
@@ -34,11 +34,7 @@ public class RacingCar {
     }
 
     public boolean racing() {
-        if (tryCnt > 0) {
-            tryCnt--;
-            return true;
-        }
-        return false;
+        return tryCnt.checkTryCnt();
     }
 
 }
