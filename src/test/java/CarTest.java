@@ -49,6 +49,20 @@ class CarTest {
     }
 
     @Test
+    @DisplayName("시도 횟수 있을때 true 나오는지 체크")
+    public void checkTryCntTrueTest() {
+        assertThat(new TryCnt(1).checkTryCnt()).isTrue();
+    }
+
+    @Test
+    @DisplayName("시도 횟수 없을때 false 나오는지 체크")
+    public void checkTryCntFalseTest() {
+        TryCnt tryCnt = new TryCnt(1);
+        tryCnt.checkTryCnt();
+        assertThat(tryCnt.checkTryCnt()).isFalse();
+    }
+
+    @Test
     @DisplayName("trim() 함수 적용 체크")
     public void chkNameTrim() {
         assertThat(new Car("abc ").getCarName()).isEqualTo("abc");
