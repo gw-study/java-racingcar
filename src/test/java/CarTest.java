@@ -1,7 +1,4 @@
-import RacingCar.domain.Car;
-import RacingCar.domain.CarName;
-import RacingCar.domain.TryCnt;
-import RacingCar.domain.WinnerCars;
+import RacingCar.domain.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -87,6 +84,28 @@ class CarTest {
 
         WinnerCars winnerCars = new WinnerCars(cars);
         assertThat(winnerCars.findWinnerCarList()).containsExactly(car1);
+    }
+
+    @Test
+    @DisplayName("getLastCarList : 가장 마지막 리스트롤 가져오는지 TEST")
+    public void getLastCarListTest() {
+        Car car1 = new Car("aaa");
+        Car car2 = new Car("bbb");
+
+        List<Car> cars = new ArrayList<>();
+
+        cars.add(car1);
+        cars.add(car2);
+
+        RacingResultCars resultCars = new RacingResultCars();
+        resultCars.addRacingResult(cars);
+
+        List<Car> cars2 = new ArrayList<>();
+        cars2.add(car1);
+
+        resultCars.addRacingResult(cars2);
+
+        assertThat(resultCars.getLastCarList()).isEqualTo(cars2);
 
     }
 
