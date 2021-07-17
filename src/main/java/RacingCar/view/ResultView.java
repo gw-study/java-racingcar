@@ -1,16 +1,27 @@
-package RacingCar;
+package RacingCar.view;
+
+import RacingCar.domain.Car;
+import RacingCar.domain.RacingResultCars;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ResultView {
     private final String displayPosition = "-";
+    private final RacingResultCars racingResult;
 
-    public ResultView() {
+    public ResultView(RacingResultCars racingResult) {
         System.out.println("실행 결과");
+        this.racingResult = racingResult;
     }
 
-    public void printCar(List<Car> carList) {
+    public void printResult() {
+        for (List<Car> carList : racingResult.getRacingResult()) {
+            printCar(carList);
+        }
+    }
+
+    private void printCar(List<Car> carList) {
         System.out.println();
         for (Car car : carList) {
             System.out.println(car.getCarName() + " : " + printPosition(car));
@@ -19,7 +30,7 @@ public class ResultView {
 
     private String printPosition(Car car) {
         int carPosition = car.getCurPosition();
-        StringBuilder result = new StringBuilder("");
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < carPosition; i++) {
             result.append(displayPosition);
         }

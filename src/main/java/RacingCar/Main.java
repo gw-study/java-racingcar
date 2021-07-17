@@ -1,16 +1,24 @@
 package RacingCar;
 
+import RacingCar.domain.RacingCar;
+import RacingCar.domain.RacingResultCars;
+import RacingCar.domain.WinnerCars;
+import RacingCar.view.InputView;
+import RacingCar.view.ResultView;
+
 public class Main {
     public static void main(String[] args) {
         InputView inputView = new InputView();
         RacingCar racingCar = new RacingCar(inputView.inputCarName(), inputView.tryCount());
-        ResultView resultView = new ResultView();
+        RacingResultCars racingResultCars = new RacingResultCars();
 
         while (racingCar.racing()) {
-            resultView.printCar(racingCar.start());
+            racingResultCars.addRacingResult(racingCar.start());
         }
 
-        WinnerCars winnerCars = new WinnerCars(racingCar.getCarList());
+        ResultView resultView = new ResultView(racingResultCars);
+        resultView.printResult();
+        WinnerCars winnerCars = new WinnerCars(racingResultCars.getLastCarList());
         resultView.printWinner(winnerCars.findWinnerCarList());
 
     }

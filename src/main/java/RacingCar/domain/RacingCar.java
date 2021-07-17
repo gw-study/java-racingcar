@@ -1,4 +1,6 @@
-package RacingCar;
+package RacingCar.domain;
+
+import RacingCar.utils.RandomMovingStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,11 +8,11 @@ import java.util.List;
 public class RacingCar {
 
     private final List<Car> carList = new ArrayList<>();
-    private int tryCnt;
+    private final TryCnt tryCnt;
 
-    RacingCar(String carName, int tryCnt) {
+    public RacingCar(String carName, int tryCnt) {
         initCars(carName);
-        this.tryCnt = tryCnt;
+        this.tryCnt = new TryCnt(tryCnt);
     }
 
     private void initCars(String carName) {
@@ -19,11 +21,7 @@ public class RacingCar {
             carList.add(new Car(car));
         }
     }
-
-    public List<Car> getCarList() {
-        return carList;
-    }
-
+    
     public List<Car> start() {
         for (Car car : carList) {
             car.move(new RandomMovingStrategy());
@@ -32,11 +30,7 @@ public class RacingCar {
     }
 
     public boolean racing() {
-        if (tryCnt > 0) {
-            tryCnt--;
-            return true;
-        }
-        return false;
+        return tryCnt.checkTryCnt();
     }
 
 }
