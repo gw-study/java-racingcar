@@ -1,5 +1,11 @@
 package racingcar;
 
+import racingcar.domain.Car;
+import racingcar.domain.Racing;
+import racingcar.domain.Winners;
+import racingcar.view.InputView;
+import racingcar.view.ResultView;
+
 import java.util.List;
 
 public class Main {
